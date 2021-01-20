@@ -127,27 +127,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Index.css" />
+    <Content Include="Content\Layout.css" />
+    <Content Include="Content\Para Borrar\bootstrap-theme.css" />
+    <Content Include="Content\Para Borrar\bootstrap-theme.min.css" />
+    <Content Include="Content\Para Borrar\bootstrap.css" />
+    <Content Include="Content\Para Borrar\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\Para Borrar\Site.css" />
+    <Content Include="Scripts\Index.js" />
+    <Content Include="Scripts\Para Borrar\bootstrap.js" />
+    <Content Include="Scripts\Para Borrar\bootstrap.min.js" />
+    <None Include="Scripts\Para Borrar\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Para Borrar\jquery-3.4.1.js" />
+    <Content Include="Scripts\Para Borrar\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\Para Borrar\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\Para Borrar\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\Para Borrar\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Para Borrar\jquery.validate.js" />
+    <Content Include="Scripts\Para Borrar\jquery.validate.min.js" />
+    <Content Include="Scripts\Para Borrar\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Para Borrar\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Para Borrar\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -156,11 +159,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\Para Borrar\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Para Borrar\Error.cshtml" />
+    <Content Include="Views\Shared\Para Borrar\_Layout.cshtml" />
+    <Content Include="Views\Home\Para Borrar\About.cshtml" />
+    <Content Include="Views\Home\Para Borrar\Contact.cshtml" />
+    <Content Include="Views\Home\Para Borrar\Index.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -172,13 +177,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\Para Borrar\bootstrap.min.css.map" />
+    <Content Include="Content\Para Borrar\bootstrap.css.map" />
+    <Content Include="Content\Para Borrar\bootstrap-theme.min.css.map" />
+    <Content Include="Content\Para Borrar\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\Para Borrar\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\Para Borrar\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
