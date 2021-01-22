@@ -127,6 +127,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\Para Borrar\bootstrap-theme.css" />
@@ -137,6 +138,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Para Borrar\Site.css" />
+    <Content Include="Scripts\Admin.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\Para Borrar\bootstrap.js" />
     <Content Include="Scripts\Para Borrar\bootstrap.min.js" />
@@ -167,6 +169,7 @@
     <Content Include="Views\Home\Para Borrar\Index.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
