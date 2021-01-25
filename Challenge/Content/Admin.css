@@ -70,3 +70,83 @@ ul {
         border-top: 0px !important;
         margin-top: 0px !important;
     }
+
+    #Dropdown > li > div {
+        border: 3px solid #fff;
+        border-radius: 1rem;
+    }
+
+
+
+/*Estilo del Botón Submit*/
+/*
+#home > button.btn.btn-success {
+    margin: auto !important;
+    background-color: #6281C4 !important;
+    border-color: #6281C4 !important;
+}
+
+    #home > button.btn.btn-success:hover {
+        background-color: #10274D !important;
+        border-color: #10274D !important;
+    }
+
+    #home > button.btn.btn-success:focus {
+        box-shadow: 0 0 0 0.25rem rgba(16,39,67,.5) !important;
+    }  
+    */
+
+#Agregar {
+    color: green;
+}
+
+.Editar, .azul {
+    color: #3B61B5;
+}
+
+.verde {
+    color: #198754;
+}
+
+
+
+.Eliminar {
+    color:red;
+}
+
+table {
+    text-align:center;
+}
+
+span:hover, #Agregar {
+    cursor:pointer;
+}
+
+#Modal_Uno {
+    background-color: rgba(33,37,41,0.4);
+}
+
+#Docente_Cupo {
+    margin-left:0px !important;
+    margin-right:0px !important;
+}
+
+    #Docente_Cupo > div:first-child {
+        padding-left:0px!important;
+    }
+
+    #Docente_Cupo > div:nth-child(2) {
+        padding-right:0px !important;
+    }
+
+@media screen and (max-width: 650px) {
+    h3.ocultable {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    span.ocultable {
+        display: none !important;
+    }
+}
