@@ -1,15 +1,29 @@
-﻿div.container-fluid {
-    background-color: #3B61B5 !important;
-}
-
-nav{
+﻿/*NAVBAR*/
+nav {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
 
-h3, h5 {
+div.container-fluid {
+    background-color: #3B61B5 !important;
+}
+
+/*Pestañas*/
+h3 {
     color:#fff;
+}
+
+h3, h5 {
     margin-bottom:0px !important;
+}
+
+ul {
+    font-weight: 450;
+    font-size: 1.40rem;
+}
+
+ul, a {
+    border-bottom: none !important;
 }
 
 .nav-link {
@@ -27,6 +41,7 @@ h3, h5 {
         border-left-width: 0.1rem !important;
         opacity: 1 !important;
     }
+
     .nav-link:hover {
         border-color: #D0F2F7 #D0F2F7 #fff !important;
         border-top-width: 0.1rem !important;
@@ -34,15 +49,7 @@ h3, h5 {
         border-left-width: 0.1rem !important;
     }
 
-ul, a {
-    border-bottom:none!important;
-}
-
-ul {
-    font-weight: 450;
-    font-size: 1.40rem;
-}
-
+/*Dropdown*/
 #navOpciones > li > a, .dropdown-menu {
     font-size: 1rem;
     color: #fff !important;
@@ -76,31 +83,21 @@ ul {
         border-radius: 1rem;
     }
 
-
-
-/*Estilo del Botón Submit*/
-/*
-#home > button.btn.btn-success {
-    margin: auto !important;
-    background-color: #6281C4 !important;
-    border-color: #6281C4 !important;
+/*TABLA*/
+table {
+    text-align: center;
 }
 
-    #home > button.btn.btn-success:hover {
-        background-color: #10274D !important;
-        border-color: #10274D !important;
-    }
+td, th {
+    word-break: break-word;
+}
 
-    #home > button.btn.btn-success:focus {
-        box-shadow: 0 0 0 0.25rem rgba(16,39,67,.5) !important;
-    }  
-    */
-
-#Agregar {
+/*Íconos para Agregar, Editar o Eliminar*/
+.Agregar{
     color: green;
 }
 
-.Editar, .azul {
+.Editar, .EditarDocentes, .azul {
     color: #3B61B5;
 }
 
@@ -108,37 +105,38 @@ ul {
     color: #198754;
 }
 
-
-
-.Eliminar {
+.Eliminar, .EliminarDocentes {
     color:red;
 }
 
-table {
-    text-align:center;
+.Editar, .EditarDocentes, .Eliminar, .EliminarDocentes {
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
-span:hover, #Agregar {
+/*MODALS*/
+span>svg:hover{
     cursor:pointer;
 }
 
-#Modal_Uno {
+#Modal_Materias, #Modal_Docentes {
     background-color: rgba(33,37,41,0.4);
 }
 
-#Docente_Cupo {
+#Materia_Cupo, #Docente_DNI_Estado{
     margin-left:0px !important;
     margin-right:0px !important;
 }
 
-    #Docente_Cupo > div:first-child {
-        padding-left:0px!important;
+    #Materia_Cupo > div:first-child, #Docente_DNI_Estado > div:first-child {
+        padding-left: 0px !important;
     }
 
-    #Docente_Cupo > div:nth-child(2) {
-        padding-right:0px !important;
+    #Materia_Cupo > div:nth-child(2), #Docente_DNI_Estado > div:nth-child(2) {
+        padding-right: 0px !important;
     }
 
+/*Responsive*/
 @media screen and (max-width: 650px) {
     h3.ocultable {
         display: none !important;
