@@ -1,0 +1,249 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Estudiante";
+}
+
+@section Styles{
+    <link href="~/Content/Estudiante.css" rel="stylesheet" />
+}
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <div></div>
+        <h3 class="ocultable">Estudiante</h3>
+        <ul id="Dropdown" class="dropdown dropstart">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">EP</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="navOpciones">
+                    <li>
+                        <a class="dropdown-item" href="/Home/Logout">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                </svg>
+                            </span> Salir
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="tab-pane fade show active" id="Materias" role="tabpanel" aria-labelledby="home-tab">
+    <table id="MateriasInscriptas" class="table table-striped col-md-11">
+        <thead>
+            <tr class="TituloTabla">
+                <th colspan="6">
+                    <h4>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                            </svg>
+                        </span>Materias Inscriptas
+                    </h4>
+                </th>
+                <th>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M3.544 10.705A.5.5 0 0 0 4 11h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5a.5.5 0 0 0-.082.537z" />
+                        </svg>
+                    </span>
+                </th>
+            </tr>
+            <tr class="toggleTable">
+                <th scope="col">Cod</th>
+                <th scope="col">Materia</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Días y Horarios</th>
+                <th scope="col">Docente</th>
+                <th scope="col">Cupo</th>
+                <th scope="col">Desanotarme</th>
+            </tr>
+        </thead>
+        <tbody class="toggleTable">
+            <tr>
+                <th scope="row">1</th>
+                <td>Matemática</td>
+                <td>No Contiene Descripción</td>
+                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
+                <td id="2">Rodríguez, Luis</td>
+                <td>26</td>
+                <td>
+                    <span class="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Lengua</td>
+                <td>No Contiene Descripción</td>
+                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
+                <td id="2">Rodríguez, Luis</td>
+                <td>33</td>
+                <td>
+                    <span class="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Lengua</td>
+                <td>No Contiene Descripción</td>
+                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
+                <td id="2">Rodríguez, Luis</td>
+                <td>33</td>
+                <td>
+                    <span class="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="MateriasListado" class="table table-striped col-md-11">
+        <thead>
+            <tr class="TituloTabla">
+                <th colspan="6">
+                    <h4>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                            </svg>
+                        </span>Listado de Materias
+                    </h4>
+                </th>
+                <th>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M3.544 10.705A.5.5 0 0 0 4 11h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5a.5.5 0 0 0-.082.537z" />
+                        </svg>
+                    </span>
+                </th>
+            </tr>
+            <tr class="toggleTable">
+                <th scope="col">Cod</th>
+                <th scope="col">Materia</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Días y Horarios</th>
+                <th scope="col">Docente</th>
+                <th scope="col">Cupo</th>
+                <th scope="col">Anotarme</th>
+            </tr>
+        </thead>
+        <tbody class="toggleTable">
+            <tr>
+                <th scope="row">1</th>
+                <td>Matemática</td>
+                <td>No Contiene Descripción</td>
+                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
+                <td id="2">Rodríguez, Luis</td>
+                <td>26</td>
+                <td>
+                    <span class="Agregar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Lengua</td>
+                <td>No Contiene Descripción</td>
+                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
+                <td id="2">Rodríguez, Luis</td>
+                <td>33</td>
+                <td>
+                    <span class="Agregar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Lengua</td>
+                <td>No Contiene Descripción</td>
+                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
+                <td id="2">Rodríguez, Luis</td>
+                <td>33</td>
+                <td>
+                    <span class="Agregar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade hide" id="Modal_Materias" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Titulo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input class="form-control" type="text" name="Nombre" pattern=".{1,50}" placeholder="Nombre de la Materia" title="Debe contener entre 1 y 50 caracteres." required />
+                        <br />
+                        <input class="form-control" type="text" name="Descripcion" pattern=".{1,200}" placeholder="Descripción (opcional)" title="Debe contener entre 1 y 200 caracteres." />
+                        <br />
+                        <input class="form-control" type="text" name="Horario" pattern=".{1,50}" placeholder="Días y Horarios" title="Debe contener entre 1 y 50 caracteres." required />
+                        <br />
+                        <div class="input-group row" id="Materia_Cupo">
+                            <div class="col">
+                                <label for="Docente">Docente</label>
+                                <select name="Docente" class="form-select">
+                                    <option value="1">Pérez, Lucía</option>
+                                    <option value="2">Rodríguez, Luis</option>
+                                </select>
+                            </div>
+                            <div class="col-2">
+                                <label for="Cupo">Cupo</label>
+                                <input class="form-control" type="number" name="Cupo" min="5" max="40" required />
+                            </div>
+                        </div>
+                        <input id="ModalSubmitMaterias" type="submit" class="hide" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <script src="~/Scripts/Estudiante.js"></script>
+}

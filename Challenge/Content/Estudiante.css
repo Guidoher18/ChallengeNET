@@ -1,0 +1,146 @@
+﻿/*NAVBAR*/
+nav {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+div.container-fluid {
+    background-color: #3B61B5 !important;
+}
+
+h3 {
+    color: #fff;
+    margin-bottom: 0px !important;
+    text-align:center;
+}
+
+ul {
+    font-weight: 450;
+    font-size: 1.40rem;
+}
+
+ul, a {
+    border-bottom: none !important;
+}
+
+.nav-link {
+    opacity: .8;
+    color: #fff !important;
+    background-color: #10274D !important;
+}
+
+/*Dropdown*/
+#navOpciones > li > a, .dropdown-menu {
+    font-size: 1rem;
+    color: #fff !important;
+    background-color: #3B61B5 !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+#navbarDropdown {
+    background-color: transparent !important;
+}
+
+#Dropdown {
+    margin-bottom: 0px !important;
+}
+
+    #Dropdown > li > a {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    #Dropdown > li > ul {
+        border-top: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    #Dropdown > li > div {
+        border: 3px solid #fff;
+        border-radius: 1rem;
+    }
+
+/*TABLA*/
+table {
+    text-align: center;
+}
+
+td, th {
+    word-break: break-word;
+}
+
+h4 {
+    margin-bottom: 0px !important;
+}
+
+tr.TituloTabla {
+    text-align:left!important;
+}
+
+tr.TituloTabla th:nth-child(2) {
+    text-align: right;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+#MateriasListado .TituloTabla {
+    color: #000080 !important;
+    background-color: #ebeff7 !important;
+}
+
+#MateriasInscriptas .TituloTabla {
+    color: #008000 !important;
+    background-color: #e5f2e5 !important;
+}
+
+.rotado {
+    transform: rotate(180deg);
+}
+
+/*Íconos para Agregar, Editar o Eliminar*/
+.Agregar {
+    color: green;
+}
+
+.verde {
+    color: #198754;
+}
+
+.Eliminar{
+    color: red;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+table svg {
+    background-color: #fff;
+}
+
+.TituloTabla th:nth-child(2) > span:hover, tbody span:hover {
+    cursor: pointer;
+}
+
+/*Estilo "zebra" de las tablas*/
+#MateriasListado {
+    --bs-table-striped-bg: #c5d7f2;
+    --bs-table-striped-color: #000;
+    color: #000;
+    border-color: #bacbe6;
+}
+
+#MateriasInscriptas {
+    --bs-table-striped-bg: #c7dbd2;
+    --bs-table-striped-color: #000;
+    color: #000;
+    border-color: #bcd0c7;
+}
+
+/*Responsive*/
+@media screen and (max-width: 320px) {
+    h3.ocultable {
+        display: none !important;
+    }
+}

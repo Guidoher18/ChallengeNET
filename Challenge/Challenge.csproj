@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Estudiante.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\Para Borrar\bootstrap-theme.css" />
@@ -139,6 +140,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Para Borrar\Site.css" />
     <Content Include="Scripts\Admin.js" />
+    <Content Include="Scripts\Estudiante.js" />
     <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\Para Borrar\bootstrap.js" />
     <Content Include="Scripts\Para Borrar\bootstrap.min.js" />

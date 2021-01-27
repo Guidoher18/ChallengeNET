@@ -114,6 +114,10 @@ td, th {
     padding-right: 1vw;
 }
 
+table svg {
+    background-color: #fff;
+}
+
 /*MODALS*/
 span>svg:hover{
     cursor:pointer;
@@ -137,6 +141,7 @@ span>svg:hover{
     }
 
 /*Responsive*/
+/*
 @media screen and (max-width: 650px) {
     h3.ocultable {
         display: none !important;
@@ -148,3 +153,5 @@ span>svg:hover{
         display: none !important;
     }
 }
+
+    */
