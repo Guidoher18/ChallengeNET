@@ -9,13 +9,13 @@
 
 <div class="col-md-6">
     <h2 class="h2">Sistema de Inscripción a Materias</h2>
-    <form action="" method="post">
+    <form action="@Url.Action("Login","Home")" method="post">
         <div class="btn-group btn-group-toggle form-control" id="Tipo_de_Usuario" data-toggle="buttons">
             <label class="btn btn-secondary active">
-                <input type="radio" name="option" class="oculto" value="Alumno" autocomplete="off" checked> Estudiante
+                <input type="radio" name="Tipo_de_Usuario" class="oculto" value="Alumno" autocomplete="off" checked> Estudiante
             </label>
             <label class="btn btn-secondary">
-                <input type="radio" name="option" class="oculto" value="Admin" autocomplete="off"> Admin
+                <input type="radio" name="Tipo_de_Usuario" class="oculto" value="Admin" autocomplete="off"> Admin
             </label>
         </div>
         <div class="input-group row">
@@ -26,7 +26,7 @@
                         <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control" placeholder="DNI" id="Dni" pattern="\d{8}" required>
+                <input type="text" name="IND" class="form-control" placeholder="DNI" id="Dni" pattern="\d{8}" required>
             </div>
             <div class="input-group col form-control sinBorde">
                 <span class="input-group-text">
@@ -34,7 +34,7 @@
                         <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
                     </svg>
                 </span>
-                <input type="password" class="form-control" placeholder="Contraseña" id="Contraseña" pattern="([A-Za-z0-9]){6}" title="La Contraseña consta de 6 caracteres alfanuméricos" required />
+                <input type="password" name="Password" class="form-control" placeholder="Contraseña" id="Contraseña" pattern="([A-Za-z0-9]){6}" title="La Contraseña consta de 6 caracteres alfanuméricos" required />
             </div>
             <div class="input-group col form-control sinBorde" id="DivLegajo">
                 <span class="input-group-text">
@@ -42,16 +42,22 @@
                         <path d="M.54 3.87L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control" placeholder="Legajo" id="Legajo" pattern="\d{4}" required />
+                <input type="text" name="Docket" class="form-control" placeholder="Legajo" id="Legajo" pattern="\d{4}" required />
             </div>
         </div>
         <div class="btn form-control">
-            <input type="submit" class="btn btn-success" id="Submit" />
+            <input type="submit" class="btn btn-success" id="Submit" value="Iniciar Sesión"/>
         </div>
     </form>
+    <div id="Error">
+        <h6>
+            @Html.Raw(ViewBag.Error)
+        </h6>
+    </div>
     <div class="alert alert-dismissible fade show oculto" role="alert" id="info">
         <strong>¡Atención!</strong> Recuerda ingresar los <span></span> dígitos sin puntos
     </div>
+
 </div>
 
 @section Scripts{

@@ -84,4 +84,11 @@ span.input-group-text > svg {
 /*INFO CAMPOS*/
 #info {
     text-align: center;
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+#Error {
+    text-align:center;
+    color:#FF0000;
 }
