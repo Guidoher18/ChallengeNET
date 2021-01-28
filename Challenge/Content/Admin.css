@@ -105,7 +105,7 @@ td, th {
     color: #198754;
 }
 
-.Eliminar, .EliminarDocentes {
+.Eliminar, .EliminarDocentes, #Modal_Eliminar .modal-title {
     color:red;
 }
 
@@ -123,7 +123,7 @@ span>svg:hover{
     cursor:pointer;
 }
 
-#Modal_Materias, #Modal_Docentes {
+#Modal_Materias, #Modal_Docentes, #Modal_Eliminar {
     background-color: rgba(33,37,41,0.4);
 }
 
@@ -141,7 +141,7 @@ span>svg:hover{
     }
 
 /*Responsive*/
-/*
+
 @media screen and (max-width: 650px) {
     h3.ocultable {
         display: none !important;
@@ -152,6 +152,4 @@ span>svg:hover{
     span.ocultable {
         display: none !important;
     }
-}
-
-    */
+}    

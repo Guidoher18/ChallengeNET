@@ -46,10 +46,10 @@ namespace Challenge.Controllers
                             break;
                         case "Admin":
                             vista = "Admin";
+                            ViewBag.Iniciales = User.First_Name.Substring(0, 1) + User.Last_Name.Substring(0, 1);
                             break;
                     }
-
-                    return View("~/Views/Home/" + vista + ".cshtml");
+                    return RedirectToAction(vista);
                 }
                 else
                 {
@@ -64,20 +64,130 @@ namespace Challenge.Controllers
             }
         }
 
+        /// <summary>
+        /// Cierra la Sesión y elimina los datos almacenados en Session 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Admin()
         {
             User User = new User();
             User = (User)Session["User_loggedIn"];
 
-            if (isLoggedIn() && User.User_Type == "Admin")
+            if (isLoggedIn("Admin"))
             {
+                ViewBag.Materias = Consultar_Materias();
+                ViewBag.Docentes = Consultar_Docentes();
+
+                ViewBag.Iniciales = User.First_Name.Substring(0, 1) + User.Last_Name.Substring(0, 1);
                 return View();
             }
             else
             {
-                ViewBag.Error = "<span>Para acceder</span><br/><strong>Inicie Sesión con una cuenta de Admin.</strong>";
+                ViewBag.Error = "<span>Para acceder</span><br/><strong>Inicie Sesión con una cuenta de Admin</strong>";
                 return View("~/Views/Home/Index.cshtml");
             }
+        }
+
+        private Dictionary<int, Subject> Consultar_Materias() {
+            HomeManager Manager = new HomeManager();
+            Dictionary <int,Subject> Subjects = Manager.getSubjects();
+
+            return Subjects;
+        }
+
+        private Dictionary<int, Professor> Consultar_Docentes()
+        {
+            HomeManager Manager = new HomeManager();
+            Dictionary<int, Professor> Professors = Manager.getProfessors();
+
+            return Professors;
+        }
+
+        //ABM - MATERIAS
+
+        /// <summary>
+        /// Permite Agregar una Materia a la BBDD
+        /// </summary>
+        /// <param name="Nombre"></param>
+        /// <param name="Descripcion"></param>
+        /// <param name="Horario"></param>
+        /// <param name="Docente"></param>
+        /// <param name="Cupo"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AMateria(string Nombre, string Descripcion, string Horario, string Docente, int Cupo)
+        {
+            Subject Subject = new Subject();
+
+            Subject.Name = Nombre;
+            Subject.Description = Descripcion;
+            Subject.Schedule = Horario;
+            Subject.IdProfessor = int.Parse(Docente);
+            Subject.Vacancies = Cupo;
+
+            HomeManager Manager = new HomeManager();
+            Manager.addSubject(Subject);
+
+            return RedirectToAction("Admin");
+        }
+
+        /// <summary>
+        /// Permite Eliminar una Materia de la BBDD
+        /// </summary>
+        /// <param name="Cod"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult BMateria(string Cod) 
+        {
+            HomeManager Manager = new HomeManager();
+            Manager.delete("Subjects", Cod);
+
+            return RedirectToAction("Admin");
+        }
+
+        /// <summary>
+        /// Permite Eliminar una Materia de la BBDD
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="Nombre"></param>
+        /// <param name="Descripcion"></param>
+        /// <param name="Horario"></param>
+        /// <param name="Docente"></param>
+        /// <param name="Cupo"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult MMateria(string Id, string Nombre, string Descripcion, string Horario, string Docente, int Cupo)
+        {
+            Subject Subject = new Subject();
+
+            Subject.Id = int.Parse(Id);
+            Subject.Name = Nombre;
+            Subject.Description = Descripcion;
+            Subject.Schedule = Horario;
+            Subject.IdProfessor = int.Parse(Docente);
+            Subject.Vacancies = Cupo;
+
+            HomeManager Manager = new HomeManager();
+            Manager.updateSubject(Subject);
+
+            return RedirectToAction("Admin");
+        }
+
+
+
+        [HttpPost]
+        public ActionResult BDocente(string Cod)
+        {
+            HomeManager Manager = new HomeManager();
+            Manager.delete("Professors", Cod);
+
+            return RedirectToAction("Admin");
         }
 
         public ActionResult Estudiante()
@@ -85,25 +195,28 @@ namespace Challenge.Controllers
             User User = new User();
             User = (User)Session["User_loggedIn"];
 
-            if (isLoggedIn() && User.User_Type == "Alumno")
+            if (isLoggedIn("Alumno"))
             {
                 return View();
             }
             else
             {
-                ViewBag.Error = "<span>Para acceder</span><br/><strong>Inicie Sesión con una cuenta de Estudiante.</strong>";
+                ViewBag.Error = "<span>Para acceder</span><br/><strong>Inicie Sesión con una cuenta de Estudiante</strong>";
                 return View("~/Views/Home/Index.cshtml");
             }
         }
 
         /// <summary>
-        /// Verifica si el usuario está loggeado (si hay un User guardado en Session)
+        /// Verifica si el usuario está loggeado (si hay un User guardado en Session), y si coincide con el Type requerido
         /// </summary>
+        /// <param name="Type"> Admin o Alumno </param>
         /// <returns>bool</returns>
-        private bool isLoggedIn()
+        private bool isLoggedIn(string Type)
         {
             User User = new User();
-            if (Session["User_loggedIn"] != null)
+            User = (User)Session["User_loggedIn"];
+
+            if (Session["User_loggedIn"] != null && User.User_Type == Type)
             {
                 return true;
             }
