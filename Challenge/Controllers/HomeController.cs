@@ -152,7 +152,7 @@ namespace Challenge.Controllers
         }
 
         /// <summary>
-        /// Permite Eliminar una Materia de la BBDD
+        /// Permite Modificar una Materia de la BBDD
         /// </summary>
         /// <param name="Id"></param>
         /// <param name="Nombre"></param>
@@ -179,13 +179,66 @@ namespace Challenge.Controllers
             return RedirectToAction("Admin");
         }
 
+        //ABM - DOCENTES
 
+        /// <summary>
+        /// Permite Agregar un Docente a la BBDD
+        /// </summary>
+        /// <param name="ApellidoDocente"></param>
+        /// <param name="NombreDocente"></param>
+        /// <param name="DNIDocente"></param>
+        /// <param name="EstadoDocente"></param>
+        /// <returns></returns>
+        public ActionResult ADocente(string ApellidoDocente, string NombreDocente, string DNIDocente, string EstadoDocente)
+        {
+            Professor Professor = new Professor();
 
+            Professor.Last_Name = ApellidoDocente;
+            Professor.First_Name = NombreDocente;
+            Professor.IND = DNIDocente;
+            Professor.State = EstadoDocente;
+
+            HomeManager Manager = new HomeManager();
+            Manager.addProfessor(Professor);
+
+            return RedirectToAction("Admin");
+        }
+
+        /// <summary>
+        /// Permite Eliminar un Docente de la BBDD
+        /// </summary>
+        /// <param name="Cod"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult BDocente(string Cod)
         {
             HomeManager Manager = new HomeManager();
             Manager.delete("Professors", Cod);
+
+            return RedirectToAction("Admin");
+        }
+
+        /// <summary>
+        /// Permite Modificar un Docente de la BBDD
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="ApellidoDocente"></param>
+        /// <param name="NombreDocente"></param>
+        /// <param name="DNIDocente"></param>
+        /// <param name="EstadoDocente"></param>
+        /// <returns></returns>
+        public ActionResult MDocente(string Id, string ApellidoDocente, string NombreDocente, string DNIDocente, string EstadoDocente)
+        {
+            Professor Professor = new Professor();
+
+            Professor.Id = int.Parse(Id);
+            Professor.Last_Name = ApellidoDocente;
+            Professor.First_Name = NombreDocente;
+            Professor.IND = DNIDocente;
+            Professor.State = EstadoDocente;
+
+            HomeManager Manager = new HomeManager();
+            Manager.updateProfessor(Professor);
 
             return RedirectToAction("Admin");
         }

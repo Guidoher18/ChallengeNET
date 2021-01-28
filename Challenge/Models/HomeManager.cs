@@ -144,7 +144,7 @@ namespace Challenge.Models
             }
         }
 
-        //ABM - MATERIAS
+        //AM - MATERIAS
 
         /// <summary>
         /// Agrega una Materia a la tabla Subjects
@@ -191,6 +191,52 @@ namespace Challenge.Models
             Conexion.Close();
         }
 
+        //AM - DOCENTES
+
+        /// <summary>
+        /// Agrega un Docente a la tabla Subjects
+        /// </summary>
+        /// <param name="Docente"></param>
+        [HttpPost]
+        public void addProfessor(Professor Professor)
+        {
+            SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
+            Conexion.Open();
+            SqlCommand Sentencia = Conexion.CreateCommand();
+            Sentencia.CommandText = "INSERT INTO Professors (Last_Name, First_Name, IND, State) VALUES(@Last_Name, @First_Name, @IND, @State)";
+
+            Sentencia.Parameters.AddWithValue("@Last_Name", Professor.Last_Name);
+            Sentencia.Parameters.AddWithValue("@First_Name", Professor.First_Name);
+            Sentencia.Parameters.AddWithValue("@IND", Professor.IND);
+            Sentencia.Parameters.AddWithValue("@State", Professor.State);
+
+            Sentencia.ExecuteNonQuery();
+            Conexion.Close();
+        }
+
+        /// <summary>
+        /// Actualiza un Docente de la BBDD
+        /// </summary>
+        /// <param name="Professor"></param>
+        [HttpPost]
+        public void updateProfessor(Professor Professor)
+        {
+            SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
+            Conexion.Open();
+            SqlCommand Sentencia = Conexion.CreateCommand();
+            Sentencia.CommandText = "UPDATE Professors SET Last_Name = @Last_Name, First_Name = @First_Name, IND = @IND, State = @State WHERE Id = @Id";
+
+            Sentencia.Parameters.AddWithValue("@Id", Professor.Id);
+            Sentencia.Parameters.AddWithValue("@Last_Name", Professor.Last_Name);
+            Sentencia.Parameters.AddWithValue("@First_Name", Professor.First_Name);
+            Sentencia.Parameters.AddWithValue("@IND", Professor.IND);
+            Sentencia.Parameters.AddWithValue("@State", Professor.State);
+
+            Sentencia.ExecuteNonQuery();
+            Conexion.Close();
+        }
+
+        //B
         /// <summary>
         /// Elimina un registro de la BBDD
         /// </summary>

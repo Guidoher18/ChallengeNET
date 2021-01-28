@@ -140,172 +140,133 @@
                                         {
                                             <option value="@x.Value.Id">@x.Value.Last_Name, @x.Value.First_Name</option>
                                         }
-                                        </select>
-                                    </div>
-                                    <div class="col-2">
-                                        <label for="Cupo">Cupo</label>
-                                        <input class="form-control" type="number" name="Cupo" min="5" max="40" required />
-                                    </div>
+                                    </select>
                                 </div>
-                                <input id="ModalSubmitMaterias" type="submit" class="hide" />
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="tab-pane fade" id="Docentes" role="tabpanel" aria-labelledby="profile-tab">
-            <table class="table table-striped col-md-11">
-                <thead>
-                    <tr>
-                        <th scope="col">Cod</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">
-                            <span class="Agregar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                </svg>
-                            </span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Pérez</td>
-                        <td>Lucía</td>
-                        <td>20999768</td>
-                        <td>Activo</td>
-                        <td>
-                            <span class="Editar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                </svg>
-                            </span>
-                            <span class="Eliminar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Rodríguez</td>
-                        <td>Luis</td>
-                        <td>20899768</td>
-                        <td>Inactivo</td>
-                        <td>
-                            <span class="Editar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                </svg>
-                            </span>
-                            <span class="Eliminar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Pérez</td>
-                        <td>Lucía</td>
-                        <td>20999768</td>
-                        <td>Activo</td>
-                        <td>
-                            <span class="Editar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                </svg>
-                            </span>
-                            <span class="Eliminar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="modal fade hide" id="Modal_Docentes" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Titulo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <input id="IdDocente" class="form-control hide" type="text" name="Id" readonly="readonly" pattern="\d{1,}" />
-                                <input class="form-control" type="text" name="ApellidoDocente" pattern=".{1,50}" placeholder="Apellido" title="Debe contener entre 1 y 50 caracteres." required />
-                                <br />
-                                <input class="form-control" type="text" name="NombreDocente" pattern=".{1,50}" placeholder="Nombre " title="Debe contener entre 1 y 50 caracteres." required />
-                                <br />
-                                <div class="input-group row" id="Docente_DNI_Estado">
-                                    <div class="col">
-                                        <label for="DNIDocente">DNI</label>
-                                        <input class="form-control" type="text" name="DNIDocente" pattern="\d{8}" placeholder="10123123" title="Debe contener los 8 dígitos sin puntos." required />
-                                    </div>
-                                    <div class="col">
-                                        <label for="EstadoDocente">Estado</label>
-                                        <select name="EstadoDocente" class="form-select">
-                                            <option value="Activo">Activo</option>
-                                            <option value="Inactivo">Inactivo</option>
-                                        </select>
-                                    </div>
+                                <div class="col-2">
+                                    <label for="Cupo">Cupo</label>
+                                    <input class="form-control" type="number" name="Cupo" min="5" max="40" required />
                                 </div>
-                                <input id="ModalSubmitDocentes" type="submit" class="hide" />
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="Modal_Eliminar" class="modal fade hide" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Modal body text goes here.</p>
-                        <form action="" method="post" class="hide">
-                            <input type="text" name="Cod" pattern="\d{1,}" />
-                            <input id="ModalSubmitEliminar" type="submit" />
+                            </div>
+                            <input id="ModalSubmitMaterias" type="submit" class="hide" />
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane fade" id="Docentes" role="tabpanel" aria-labelledby="profile-tab">
+        <table class="table table-striped col-md-11">
+            <thead>
+                <tr>
+                    <th scope="col">Cod</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">
+                        <span class="Agregar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg>
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (KeyValuePair<int, Challenge.Models.Professor> x in ViewBag.Docentes)
+                {
+                    <tr>
+                        <th scope="row">@x.Value.Id</th>
+                        <td>@x.Value.Last_Name</td>
+                        <td>@x.Value.First_Name</td>
+                        <td>@x.Value.IND</td>
+                        <td>@x.Value.State</td>
+                        <td>
+                            <span class="Editar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                </svg>
+                            </span>
+                            <span class="Eliminar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="modal fade hide" id="Modal_Docentes" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Titulo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input id="IdDocentes" class="form-control hide" type="text" name="Id" readonly="readonly" pattern="\d{1,}" />
+                            <input class="form-control" type="text" name="ApellidoDocente" pattern=".{1,50}" placeholder="Apellido" title="Debe contener entre 1 y 50 caracteres." required />
+                            <br />
+                            <input class="form-control" type="text" name="NombreDocente" pattern=".{1,50}" placeholder="Nombre " title="Debe contener entre 1 y 50 caracteres." required />
+                            <br />
+                            <div class="input-group row" id="Docente_DNI_Estado">
+                                <div class="col">
+                                    <label for="DNIDocente">DNI</label>
+                                    <input class="form-control" type="text" name="DNIDocente" pattern="\d{8}" placeholder="10123123" title="Debe contener los 8 dígitos sin puntos." required />
+                                </div>
+                                <div class="col">
+                                    <label for="EstadoDocente">Estado</label>
+                                    <select name="EstadoDocente" class="form-select">
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input id="ModalSubmitDocentes" type="submit" class="hide" />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="Modal_Eliminar" class="modal fade hide" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                    <form action="" method="post" class="hide">
+                        <input type="text" name="Cod" pattern="\d{1,}" />
+                        <input id="ModalSubmitEliminar" type="submit" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">Eliminar</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    @section Scripts{
-        <script src="~/Scripts/Admin.js"></script>
-    }
+@section Scripts{
+    <script src="~/Scripts/Admin.js"></script>
+}

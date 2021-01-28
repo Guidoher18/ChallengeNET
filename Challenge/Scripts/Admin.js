@@ -1,16 +1,23 @@
 ﻿$(document).ready(function () {
-    if (sessionStorage.getItem("PestañaActiva") != null)
+    /*Recordar la pestaña seleccionada antes de que se recargue la página*/
+    /*if (sessionStorage.getItem("PestañaActiva") != null)
     {
         switch (sessionStorage.getItem("PestañaActiva"))
         {
             case "Materias":
-                $('#myTab li:first-child').click();
+                $('#profile-tab').attr("aria-selected", false);
+                $('#profile-tab').removeClass("active");
+                $('#home-tab').attr("aria-selected", true);
+                $('#home-tab').addClass("active");
                 break;
             case "Docentes":
-                $('#myTab li:nth-child(2)').click();
+                $('#home-tab').attr("aria-selected", false);
+                $('#home-tab').removeClass("active");
+                $('#profile-tab').attr("aria-selected", true);
+                $('#profile-tab').addClass("active");
                 break;
         }
-    }
+    }*/
 
     function mostrarModal(id, color, titulo, claseBoton) {
         $(id).removeClass("hide");
@@ -64,7 +71,7 @@
         }
 
         function editarDocentes() {
-            $('#IdMaterias').attr("value", datosFila[0].children[0].innerText);
+            $('#IdDocentes').attr("value", datosFila[0].children[0].innerText);
             $('#Modal_Docentes form input[name="ApellidoDocente"]').val(datosFila[0].children[1].innerText);
             $('#Modal_Docentes form input[name="NombreDocente"]').val(datosFila[0].children[2].innerText);
             $('#Modal_Docentes form input[name="DNIDocente"]').val(datosFila[0].children[3].innerText);
@@ -187,10 +194,6 @@
                 break;
         }
     });
-
-
-
-
 });
 
 
