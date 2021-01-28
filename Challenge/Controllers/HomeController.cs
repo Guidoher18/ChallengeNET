@@ -46,7 +46,6 @@ namespace Challenge.Controllers
                             break;
                         case "Admin":
                             vista = "Admin";
-                            ViewBag.Iniciales = User.First_Name.Substring(0, 1) + User.Last_Name.Substring(0, 1);
                             break;
                     }
                     return RedirectToAction(vista);
@@ -94,19 +93,28 @@ namespace Challenge.Controllers
             }
         }
 
-        private Dictionary<int, Subject> Consultar_Materias() {
+        private List<Subject> Consultar_Materias()
+        {
             HomeManager Manager = new HomeManager();
-            Dictionary <int,Subject> Subjects = Manager.getSubjects();
+            List<Subject> Subjects = Manager.getSubjects();
 
             return Subjects;
         }
 
-        private Dictionary<int, Professor> Consultar_Docentes()
+        private Dictionary<int,Professor> Consultar_Docentes()
         {
             HomeManager Manager = new HomeManager();
             Dictionary<int, Professor> Professors = Manager.getProfessors();
 
             return Professors;
+        }
+
+        private List<Registration> Consulta_Inscriptas_Alumno(int Id)
+        {
+            HomeManager Manager = new HomeManager();
+            List<Registration> Registrations = Manager.getRegistrations(Id);
+
+            return Registrations;
         }
 
         //ABM - MATERIAS
@@ -143,7 +151,7 @@ namespace Challenge.Controllers
         /// <param name="Cod"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult BMateria(string Cod) 
+        public ActionResult BMateria(string Cod)
         {
             HomeManager Manager = new HomeManager();
             Manager.delete("Subjects", Cod);
@@ -180,7 +188,7 @@ namespace Challenge.Controllers
         }
 
         //ABM - DOCENTES
-
+        [HttpPost]
         /// <summary>
         /// Permite Agregar un Docente a la BBDD
         /// </summary>
@@ -218,6 +226,7 @@ namespace Challenge.Controllers
             return RedirectToAction("Admin");
         }
 
+        [HttpPost]
         /// <summary>
         /// Permite Modificar un Docente de la BBDD
         /// </summary>
@@ -250,6 +259,30 @@ namespace Challenge.Controllers
 
             if (isLoggedIn("Alumno"))
             {
+                Dictionary<int, Professor> Docentes = Consultar_Docentes();
+                List<Subject> Materias = Consultar_Materias();
+                List<Registration> Inscriptas = Consulta_Inscriptas_Alumno(User.Id);
+
+                List <Subject> Materias_Inscriptas = new List <Subject>();
+
+                for (int j = 0; j < Inscriptas.Count(); j++)
+                {
+                    for (int k = 0; k < Materias.Count(); k++)
+                    {
+                        if (Inscriptas[j].IdSubject == Materias[k].Id ) 
+                        {
+                            Materias_Inscriptas.Add(Materias[k]);
+                            Materias.Remove(Materias[k]);
+                        }  
+                    }
+                }
+
+                ViewBag.Docentes = Docentes;
+                ViewBag.Materias = Materias;
+                ViewBag.Materias_Inscriptas = Materias_Inscriptas;
+
+                ViewBag.Iniciales = User.First_Name.Substring(0, 1) + User.Last_Name.Substring(0, 1);
+
                 return View();
             }
             else
@@ -259,6 +292,56 @@ namespace Challenge.Controllers
             }
         }
 
+        /// <summary>
+        /// Le permite al User anotarse a una Materia
+        /// </summary>
+        /// <param name="IdSubject"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Anotarme(int IdSubject)
+        {
+            User User = new User();
+            User = (User) Session["User_loggedIn"];
+            int IdStudent = User.Id;
+
+            HomeManager Manager = new HomeManager();
+            int Vacancies = Manager.getVacancies(IdSubject);
+
+            if (Vacancies >= 1)
+            {
+                Registration Registration = new Registration();
+
+                Registration.IdSubject = IdSubject;
+                Registration.IdStudent = IdStudent;
+
+                Manager.addRegistration(Registration, Vacancies);
+
+                return RedirectToAction ("Estudiante");
+            }
+            else
+            {
+                ViewBag.Error = "¡Ya no quedan vacantes en esta Materia!";
+                return View("~/Home/Views/Estudiante.cshtml");
+            }
+        }
+
+        /// <summary>
+        /// Le permite al User desanotarse a una Materia
+        /// </summary>
+        /// <param name="IdSubject"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Desanotarme(int IdSubject) 
+        {
+            User User = new User();
+            User = (User) Session["User_loggedIn"];
+
+            HomeManager Manager = new HomeManager();
+            Manager.deleteRegistration(User.Id, IdSubject);
+
+            return RedirectToAction("Estudiante");
+        }
+            
         /// <summary>
         /// Verifica si el usuario está loggeado (si hay un User guardado en Session), y si coincide con el Type requerido
         /// </summary>

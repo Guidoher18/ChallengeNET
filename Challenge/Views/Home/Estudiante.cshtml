@@ -13,7 +13,7 @@
         <h3 class="ocultable">Estudiante</h3>
         <ul id="Dropdown" class="dropdown dropstart">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">EP</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">@ViewBag.Iniciales</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="navOpciones">
                     <li>
                         <a class="dropdown-item" href="/Home/Logout">
@@ -30,6 +30,12 @@
         </ul>
     </div>
 </nav>
+
+<div id="Error">
+    <h6>
+        @Html.Raw(ViewBag.Error)
+    </h6>
+</div>
 
 <div class="tab-pane fade show active" id="Materias" role="tabpanel" aria-labelledby="home-tab">
     <table id="MateriasInscriptas" class="table table-striped col-md-11">
@@ -66,54 +72,25 @@
             </tr>
         </thead>
         <tbody class="toggleTable">
-            <tr>
-                <th scope="row">1</th>
-                <td>Matemática</td>
-                <td>No Contiene Descripción</td>
-                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
-                <td id="2">Rodríguez, Luis</td>
-                <td>26</td>
-                <td>
-                    <span class="Eliminar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Lengua</td>
-                <td>No Contiene Descripción</td>
-                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
-                <td id="2">Rodríguez, Luis</td>
-                <td>33</td>
-                <td>
-                    <span class="Eliminar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Lengua</td>
-                <td>No Contiene Descripción</td>
-                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
-                <td id="2">Rodríguez, Luis</td>
-                <td>33</td>
-                <td>
-                    <span class="Eliminar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                    </span>
-                </td>
-            </tr>
+            @foreach (Challenge.Models.Subject z in ViewBag.Materias_Inscriptas)
+            {
+                <tr>
+                    <th scope="row">@z.Id</th>
+                    <td>@z.Name</td>
+                    <td>@z.Description</td>
+                    <td>@z.Schedule</td>
+                    <td id="@z.IdProfessor">@ViewBag.Docentes[@z.IdProfessor].Last_Name, @ViewBag.Docentes[@z.IdProfessor].First_Name</td>
+                    <td>@z.Vacancies</td>
+                    <td>
+                        <span class="Eliminar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </span>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 
@@ -151,54 +128,25 @@
             </tr>
         </thead>
         <tbody class="toggleTable">
-            <tr>
-                <th scope="row">1</th>
-                <td>Matemática</td>
-                <td>No Contiene Descripción</td>
-                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
-                <td id="2">Rodríguez, Luis</td>
-                <td>26</td>
-                <td>
-                    <span class="Agregar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                        </svg>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Lengua</td>
-                <td>No Contiene Descripción</td>
-                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
-                <td id="2">Rodríguez, Luis</td>
-                <td>33</td>
-                <td>
-                    <span class="Agregar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                        </svg>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Lengua</td>
-                <td>No Contiene Descripción</td>
-                <td>Lunes y Martes de 17.00 a 19.30 hs</td>
-                <td id="2">Rodríguez, Luis</td>
-                <td>33</td>
-                <td>
-                    <span class="Agregar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                        </svg>
-                    </span>
-                </td>
-            </tr>
+            @foreach (Challenge.Models.Subject x in ViewBag.Materias)
+            {
+                <tr>
+                    <th scope="row">@x.Id</th>
+                    <td>@x.Name</td>
+                    <td>@x.Description</td>
+                    <td>@x.Schedule</td>
+                    <td id="@x.IdProfessor">@ViewBag.Docentes[@x.IdProfessor].Last_Name, @ViewBag.Docentes[@x.IdProfessor].First_Name</td>
+                    <td>@x.Vacancies</td>
+                    <td>
+                        <span class="Agregar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg>
+                        </span>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 
@@ -242,7 +190,26 @@
 
 </div>
 
-
+<div id="Modal" class="modal fade hide" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+                <form action="" method="post" class="hide">
+                    <input type="text" name="IdSubject" pattern="\d{1,}" />
+                    <input id="ModalSubmit" type="submit" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts{
     <script src="~/Scripts/Estudiante.js"></script>

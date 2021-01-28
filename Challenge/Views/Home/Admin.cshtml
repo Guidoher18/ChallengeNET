@@ -88,15 +88,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (KeyValuePair<int, Challenge.Models.Subject> x in ViewBag.Materias)
+                @foreach (Challenge.Models.Subject x in ViewBag.Materias)
                 {
                     <tr>
-                        <th scope="row">@x.Value.Id</th>
-                        <td>@x.Value.Name</td>
-                        <td>@x.Value.Description</td>
-                        <td>@x.Value.Schedule</td>
-                        <td id="@x.Value.IdProfessor">@ViewBag.Docentes[@x.Value.IdProfessor].Last_Name, @ViewBag.Docentes[@x.Value.IdProfessor].First_Name</td>
-                        <td>@x.Value.Vacancies</td>
+                        <th scope="row">@x.Id</th>
+                        <td>@x.Name</td>
+                        <td>@x.Description</td>
+                        <td>@x.Schedule</td>
+                        <td id="@x.IdProfessor">@ViewBag.Docentes[@x.IdProfessor].Last_Name, @ViewBag.Docentes[@x.IdProfessor].First_Name</td>
+                        <td>@x.Vacancies</td>
                         <td>
                             <span class="Editar">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -213,7 +213,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="post">
                             <input id="IdDocentes" class="form-control hide" type="text" name="Id" readonly="readonly" pattern="\d{1,}" />
                             <input class="form-control" type="text" name="ApellidoDocente" pattern=".{1,50}" placeholder="Apellido" title="Debe contener entre 1 y 50 caracteres." required />
                             <br />

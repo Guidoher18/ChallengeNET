@@ -58,8 +58,8 @@ namespace Challenge.Models
         /// <summary>
         /// Obtiene las Materias de la BBDD
         /// </summary>
-        /// <returns>Diccionario con las Materias ordenadas alfabéticamente</returns>
-        public Dictionary<int, Subject> getSubjects() {
+        /// <returns>Lista con las Materias ordenadas alfabéticamente</returns>
+        public List<Subject> getSubjects() {
             SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
             Conexion.Open();
             SqlCommand Sentencia = Conexion.CreateCommand();
@@ -69,8 +69,7 @@ namespace Challenge.Models
             {
                 SqlDataReader reader = Sentencia.ExecuteReader();
                 
-                Dictionary<int, Subject> Subjects = new Dictionary<int, Subject>();
-                int Counter = 0;
+                List<Subject> Subjects = new List<Subject>();
 
                 while (reader.Read())
                 {
@@ -92,8 +91,7 @@ namespace Challenge.Models
                     Subject.IdProfessor = (int)reader["IdProfessor"];
                     Subject.Vacancies = (int)reader["Vacancies"];
 
-                    Subjects.Add(Counter, Subject);
-                    Counter += 1;
+                    Subjects.Add(Subject);
                 }
 
                 Conexion.Close();
@@ -109,7 +107,7 @@ namespace Challenge.Models
         /// Obtiene los Docentes de la BBDD
         /// </summary>
         /// <returns>Diccionario con los Docentes ordenados alfabéticamente por Apellido. La clave es el Id</returns>
-        public Dictionary<int, Professor> getProfessors()
+        public Dictionary <int, Professor> getProfessors()
         {
             SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
             Conexion.Open();
@@ -120,7 +118,7 @@ namespace Challenge.Models
             {
                 SqlDataReader reader = Sentencia.ExecuteReader();
 
-                Dictionary<int, Professor> Professors = new Dictionary<int, Professor>();
+                Dictionary<int,Professor> Professors = new Dictionary<int,Professor>();
 
                 while (reader.Read())
                 {
@@ -132,7 +130,7 @@ namespace Challenge.Models
                     Professor.IND = (string)reader["IND"];
                     Professor.State = (string)reader["State"];
 
-                    Professors.Add(Professor.Id, Professor);
+                    Professors.Add(Professor.Id,Professor);
                 }
 
                 Conexion.Close();
@@ -234,6 +232,119 @@ namespace Challenge.Models
 
             Sentencia.ExecuteNonQuery();
             Conexion.Close();
+        }
+
+        
+        /// <summary>
+        /// Agrega una Inscripción de un User a una Materia. Resta una vacante 
+        /// </summary>
+        /// <param name="Registration"></param>
+        /// <param name="Vacancies"></param>
+        [HttpPost]
+        public void addRegistration(Registration Registration, int Vacancies)
+        {
+            SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
+            Conexion.Open();
+            SqlCommand Sentencia = Conexion.CreateCommand();
+            Sentencia.CommandText = "INSERT INTO Registrations (IdStudent, IdSubject, DateTime) VALUES(@IdStudent, @IdSubject, @DateTime)";
+
+            Sentencia.Parameters.AddWithValue("@IdStudent", Registration.IdStudent);
+            Sentencia.Parameters.AddWithValue("@IdSubject", Registration.IdSubject);
+            Sentencia.Parameters.AddWithValue("@DateTime", DateTime.UtcNow);
+
+            Sentencia.ExecuteNonQuery();
+
+            //Actualizo las Vacantes
+            int Vacantes = Vacancies - 1;
+            
+            SqlCommand Sentencia2 = Conexion.CreateCommand();
+            Sentencia2.CommandText = "UPDATE Subjects SET Vacancies = " + Vacantes + " WHERE Id = " + Registration.IdSubject.ToString();
+            /*
+            Sentencia.Parameters.AddWithValue("@Vacantes", Vacantes);
+            Sentencia.Parameters.AddWithValue("@Id", Registration.IdSubject);*/
+
+            Sentencia2.ExecuteNonQuery();
+            Conexion.Close();
+        }
+
+        /// <summary>
+        /// Elimina la inscripción de un Usuario a una Materia. Suma una vacante
+        /// </summary>
+        /// <param name="IdStudent"></param>
+        /// <param name="IdSubject"></param>
+        [HttpPost]
+        public void deleteRegistration(int IdStudent, int IdSubject)
+        {
+            SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
+            Conexion.Open();
+            SqlCommand Sentencia = Conexion.CreateCommand();
+            Sentencia.CommandText = "DELETE FROM Registrations WHERE IdSubject = " + IdSubject.ToString() + " AND " + "IdStudent = " + IdStudent.ToString();
+
+            Sentencia.ExecuteNonQuery();
+
+            //Actualizo las Vacantes
+            int Vacantes = getVacancies(IdSubject) + 1;
+
+            SqlCommand Sentencia2 = Conexion.CreateCommand();
+            Sentencia2.CommandText = "UPDATE Subjects SET Vacancies = " + Vacantes + " WHERE Id = " + IdSubject.ToString();
+
+            Sentencia2.ExecuteNonQuery();
+            Conexion.Close();
+        }
+
+        /// <summary>
+        /// Devuelve la cantidad de vacantes disponibles en una Materia
+        /// </summary>
+        /// <param name="IdSubject"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public int getVacancies(int IdSubject) {
+            SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
+            Conexion.Open();
+            SqlCommand Sentencia = Conexion.CreateCommand();
+            Sentencia.CommandText = "SELECT Vacancies FROM Subjects WHERE Id = " + IdSubject.ToString();
+
+            int Vacancies = (int) Sentencia.ExecuteScalar();
+            Conexion.Close();
+            return Vacancies;
+        }
+
+        /// <summary>
+        /// Obtiene las Inscripciones almacenadas en BBDD
+        /// </summary>
+        /// <returns>Diccionario con las Inscripciones ordenadas por Id</returns>
+        public List<Registration> getRegistrations(int Id)
+        {
+            SqlConnection Conexion = new SqlConnection(ConfigurationManager.AppSettings["ConexionBBDD"]);
+            Conexion.Open();
+            SqlCommand Sentencia = Conexion.CreateCommand();
+            Sentencia.CommandText = "SELECT * FROM Registrations WHERE IdStudent = " + Id.ToString();
+
+            try
+            {
+                SqlDataReader reader = Sentencia.ExecuteReader();
+
+                List<Registration> Registrations = new List<Registration>();
+
+                while (reader.Read())
+                {
+                    Registration Registration = new Registration();
+
+                    Registration.Id = (int)reader["Id"];
+                    Registration.IdSubject = (int)reader["IdSubject"];
+                    Registration.IdStudent = (int)reader["IdStudent"];
+                    Registration.DateTime = (DateTime)reader["DateTime"];
+
+                    Registrations.Add(Registration);
+                }
+
+                Conexion.Close();
+                return Registrations;
+            }
+            catch (NullReferenceException)
+            {
+                return null;
+            }
         }
 
         //B

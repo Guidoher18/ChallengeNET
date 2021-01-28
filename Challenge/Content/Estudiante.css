@@ -106,13 +106,21 @@ tr.TituloTabla th:nth-child(2) {
 }
 
 .verde {
-    color: #198754;
+    color: #198754!important;
+}
+
+.rojo {
+    color:red!important;
 }
 
 .Eliminar{
     color: red;
     padding-left: 1vw;
     padding-right: 1vw;
+}
+
+.Eliminar, .modal-title {
+    color:red;
 }
 
 table svg {
@@ -143,4 +151,13 @@ table svg {
     h3.ocultable {
         display: none !important;
     }
+}
+
+#Error {
+    text-align: center;
+    color: #FF0000;
+}
+
+#Modal {
+    background-color: rgba(33,37,41,0.4);
 }
